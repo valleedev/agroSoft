@@ -12,6 +12,7 @@ const UpdateCollaboratorModal = ({ isOpen, onClose, onSubmit, initialData }) => 
   useEffect(() => {
     if (initialData) {
       setForm({
+        id: initialData.id || '',
         identification: initialData.identification || '',
         name: initialData.name || '',
         charge: initialData.charge || '',

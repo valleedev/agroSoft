@@ -96,7 +96,7 @@ const Colaboradores = () => {
       <UpdateCollaboratorModal
         isOpen={isUpdateModalOpen}
         onClose={() => setIsUpdateModalOpen(false)}
-        onSubmit={(data) => handleUpdateCollaborator(selectedCollaborator.id, data)}
+        onSubmit={(data) => handleUpdateCollaborator(data.id, data)}
         initialData={selectedCollaborator}
       />
 

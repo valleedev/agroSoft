@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { createSeeding } = require('../controllers/seeding.controller');
+const { createSeeding, getSeedings } = require('../controllers/seeding.controller');
 const { validateFields, validateJWT } = require('../middlewares');
 
 const router = Router();
@@ -32,4 +32,7 @@ router.post(
     ],
     createSeeding
 );
+
+router.get( '/',  [ validateJWT ],  getSeedings );
+
 module.exports = router;

@@ -5,11 +5,11 @@ const navItems = [
   { icon: 'fa-home', label: 'Dashboard', path: '/dashboard' },
   { icon: 'fa-users', label: 'Colaboradores', path: '/collaborators' },
   { icon: 'fa-tools', label: 'Herramientas', path: '/tools' },
-  { icon: 'fa-leaf', label: 'Control Siembra', path: '/siembra' },
-  { icon: 'fa-bell', label: 'Notificaciones', path: '/notificaciones', badge: 0 },
-  { icon: 'fa-chart-bar', label: 'Informes', path: '/informes' },
-  { icon: 'fa-file-alt', label: 'Documentos', path: '/documentos' },
-  { icon: 'fa-cog', label: 'Configuración', path: '/configuracion' },
+  { icon: 'fa-leaf', label: 'Control Siembra', path: '/seeding' },
+  // { icon: 'fa-bell', label: 'Notificaciones', path: '/notificaciones', badge: 0 },
+  // { icon: 'fa-chart-bar', label: 'Informes', path: '/informes' },
+  // { icon: 'fa-file-alt', label: 'Documentos', path: '/documentos' },
+  // { icon: 'fa-cog', label: 'Configuración', path: '/configuracion' },
 ];
 
 const Aside = () => {

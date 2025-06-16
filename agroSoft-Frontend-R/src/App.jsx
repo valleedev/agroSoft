@@ -7,6 +7,7 @@ import LoginPage from './modules/auth/pages/LoginPage';
 import DashboardView from './modules/dashboard/views/DashboardView';
 import CollaboratorsView from './modules/collaborators/views/collaboratorsPage';
 import ToolsPage from './modules/tools/views/toolsPage';
+import SeedingView from './modules/seeding/views/SeedingView';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute><DashboardView /></PrivateRoute>} />
         <Route path="/collaborators" element={<PrivateRoute><CollaboratorsView /></PrivateRoute>} />
         <Route path="/tools" element={<PrivateRoute><ToolsPage /></PrivateRoute>} />
+        <Route path="/seeding" element={<PrivateRoute><SeedingView /></PrivateRoute>} />
       </Routes>
     </Router>
   );
