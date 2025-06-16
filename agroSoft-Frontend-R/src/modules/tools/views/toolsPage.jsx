@@ -1,10 +1,7 @@
 import Aside from '../../../components/Aside';
 import Header from '../../../components/Header';
 import LoadingOverlay from '../../../components/LoadingOverlay';
-import MainContent from '../components/MainContent';
-
-
-
+import ToolsContent from '../components/ToolsContent'
 
 
 export default function DashboardView() {
@@ -13,7 +10,7 @@ export default function DashboardView() {
       <Aside />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
-        <MainContent />
+        <ToolsContent/>
       </div>
       <LoadingOverlay />
     </div>

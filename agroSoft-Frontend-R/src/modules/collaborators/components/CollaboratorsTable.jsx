@@ -1,20 +1,35 @@
 import { useState } from 'react';
-import ConfirmDeleteModal from './ConfirmDeleteModal'; // Asegúrate de que el path sea correcto
+import ConfirmDeleteModal from './ConfirmDeleteModal';
+import UpdateCollaboratorModal from './UpdateCollaboratorModal'; 
 
-const Collaboratorstable = ({ collaborators = [], loading = false, onDelete }) => {
+const Collaboratorstable = ({ collaborators = [], loading = false, onDelete, onUpdate }) => {
   const [selectedCollaborator, setSelectedCollaborator] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   const openDeleteModal = (collaborator) => {
     setSelectedCollaborator(collaborator);
-    setIsModalOpen(true);
+    setIsDeleteModalOpen(true);
+  };
+
+  const openUpdateModal = (collaborator) => {
+    setSelectedCollaborator(collaborator);
+    setIsUpdateModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
     if (selectedCollaborator) {
       onDelete(selectedCollaborator.id);
     }
-    setIsModalOpen(false);
+    setIsDeleteModalOpen(false);
+    setSelectedCollaborator(null);
+  };
+
+  const handleUpdate = (updatedData) => {
+    if (selectedCollaborator) {
+      onUpdate(selectedCollaborator.id, updatedData);
+    }
+    setIsUpdateModalOpen(false);
     setSelectedCollaborator(null);
   };
 
@@ -40,7 +55,12 @@ const Collaboratorstable = ({ collaborators = [], loading = false, onDelete }) =
                   <td className="px-6 py-4">{collaborator.charge}</td>
                   <td className="px-6 py-4">{collaborator.contact}</td>
                   <td className="px-6 py-4 space-x-2">
-                    <button className="text-blue-600 hover:underline">Editar</button>
+                    <button
+                      className="text-blue-600 hover:underline"
+                      onClick={() => openUpdateModal(collaborator)}
+                    >
+                      Editar
+                    </button>
                     <button
                       className="text-red-600 hover:underline"
                       onClick={() => openDeleteModal(collaborator)}
@@ -61,12 +81,20 @@ const Collaboratorstable = ({ collaborators = [], loading = false, onDelete }) =
         </table>
       )}
 
-      {/* Modal de confirmación */}
+      {/* Modal de confirmación de eliminación */}
       <ConfirmDeleteModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={handleConfirmDelete}
         collaboratorName={selectedCollaborator?.name}
+      />
+
+      {/* Modal de actualización */}
+      <UpdateCollaboratorModal
+        isOpen={isUpdateModalOpen}
+        onClose={() => setIsUpdateModalOpen(false)}
+        onSubmit={handleUpdate}
+        initialData={selectedCollaborator}
       />
     </div>
   );
